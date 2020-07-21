@@ -1,13 +1,39 @@
-//create the dependcies
-var express = require('express');
+//this is the main application server for burger app
+'use strict';
 
-var orm = require("./config/orm.js");
 
-// Find all the pets ordering by the lowest price to the highest price.
-orm.selectAndOrder("animal_name", "pets", "price");
+var path = require('path');
+var PORT = process.env.PORT || 3000;
 
-// Find a pet in the pets table by an animal_name of Rachel.
-orm.selectWhere("pets", "animal_name", "Rachel");
+//load express
+var express = require("express");
+var app = express();
 
-// Find the buyer with the most pets.
-orm.findWhoHasMost("buyer_name", "buyer_id", "buyers", "pets");
+
+
+// Serve static content for the app from the "public" directory in the application directory.
+//app.use(express.static("public"));
+// Set static directory reference path
+app.use(express.static(path.join(__dirname, 'public'))); 
+
+// Parse request body as JSON
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Set Handlebars.
+var exphbs = require("express-handlebars");
+
+// Handlebars middleware
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+
+// Import routes and give the server access to them.
+var routes = require("./controllers/burgers_controller.js");
+
+app.use(routes);
+//router.start();
+
+app.listen(PORT, function() {
+  console.log("App now listening at localhost:" + PORT);
+});

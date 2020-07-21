@@ -20,17 +20,18 @@ Run the `schema.sql` and `seeds.sql` files into the mysql server from the comman
 
    * Close out of the MySQL command line tool: `exit`.
 
-   ### Schema
-CREATE DATABASE pets_db;
-USE pets_db;
+### Schema
 
-CREATE TABLE buyers
+CREATE DATABASE cat_db;
+USE cat_db;
+
+CREATE TABLE cats
 (
 	id int NOT NULL AUTO_INCREMENT,
-	buyer_name varchar(255) NOT NULL,
+	name varchar(255) NOT NULL,
+	sleepy BOOLEAN DEFAULT false,
 	PRIMARY KEY (id)
 );
-
 CREATE TABLE pets
 (
 	id int NOT NULL AUTO_INCREMENT,
