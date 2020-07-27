@@ -1,36 +1,24 @@
 //Inside the `burgers_controller.js` file, import the following:
+// * Express
+//* `burger.js`
+//4. Create the `router` for the app, and export the `router` at the end of your file.
 
-  // * Express
-   //* `burger.js`
-   //* 
-   //* 
-   //4. Create the `router` for the app, and export the `router` at the end of your file.
-
-
-   //var express = require("express");
-
-   var router = express.Router();
    
-   // Import the model (cat.js) to use its database functions.
-   var burger = require("../models/burger.js");
-   
-//
+// Import the model (cat.js) to use its database functions.
+// var express = require('express');
+var burger = require('../models/burger');
+
 // Routers for the burger app
-//
 class Router {
-  //
+
   // Initialize an instance with express app
-  //
-  // PARAMS:
-  // * app = initialized express app
-  //
+  // PARAMS: * app = initialized express app
+
   constructor(expressApp) {
     this.app = expressApp;
   }  
   
-  //
   // Start all routers
-  //
   start() {
     this.index();
     this.add();
@@ -38,9 +26,7 @@ class Router {
     this.remove();
   }
   
-  //
   // Index Route
-  //
   index() {
     this.app.get('/', (req, res) => {
       burger.list()
@@ -53,9 +39,7 @@ class Router {
     });
   }
   
-  //
   // Add Route
-  //
   add() {
     this.app.post('/add', (req, res) => {
       const burgerName = req.body.burgerName;
@@ -73,9 +57,8 @@ class Router {
     });
   }
   
-  //
+
   // Devour route
-  //
   devour() {
     this.app.put('/devour/:id', (req, res) => {
       // Convert "true" string to 1 (boolean)
@@ -94,9 +77,7 @@ class Router {
     });
   }
   
-  //
   // Remove route
-  //
   remove() {
     this.app.delete('/remove/:id', (req, res) => {
       burger.delete(parseInt(req.params.id))
@@ -111,7 +92,5 @@ class Router {
   }
 }
 
-   
-   // Export routes for server.js to use.
-   module.exports = router;
-   
+// Export the Router
+module.exports = Router;

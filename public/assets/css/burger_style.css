@@ -1,20 +1,44 @@
-li {
-    padding: 5px;
-    margin: 5px;
-    background: #faebd7;
-  }
-  
-  .label {
-    font-weight: bold;
-  }
-  
-  .create-update-form {
-    padding: 5px;
-    margin: 5px;
-    background: aqua;
-  }
-  
-  .form-group {
-    margin-bottom: 5px;
-  }
-  
+/* CSS  - impacts the main page, utlizing some new ideas below*/
+.container {
+  background-color: rgb(217, 238, 217);
+}
+
+
+.jumbotron {
+  background-image: url("/assets/img/burgerpic.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-top: 10px;
+}
+
+.jumbotron > h1 {
+  font-family: 'Creepster', cursive;
+}
+
+
+#newburger {
+  border-radius: 5px;
+}
+
+#color-override {
+  color: #fff;
+}
+
+#lefthead {
+  background-color: #5cb85c;
+  color: white;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#eatbutton, #trashbutton {
+  float: right;
+}
+
+#righthead {
+  background-color: #f0ad4e;
+  color: white;
+  text-align: center;
+  font-size: 1.2em;
+}

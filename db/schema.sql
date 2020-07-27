@@ -36,9 +36,3 @@ CREATE TABLE burgers
 	devoured BOOLEAN DEFAULT 0,
 );
 
--- PostgreSQL
--- CREATE TABLE burgers (
---   id smallserial PRIMARY KEY,
---   burger_name VARCHAR(255) NOT NULL,
---   devoured BOOLEAN DEFAULT false
--- );

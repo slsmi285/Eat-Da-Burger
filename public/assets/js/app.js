@@ -10,7 +10,7 @@ $document.ready(() => {
             burgerName: $("#burger").val().trim(),
         };
 
-        //send POST request
+        //send POST request and the promise
         $.ajax("/add", {
             type: "POST",
             data: aBurger
@@ -23,6 +23,33 @@ $document.ready(() => {
         );
     });
 
+      // Devour a burger on button click
+
+    $(".devour").on("click", function(event) {
+        event.preventDefault();
+    
+        // Find the "id" of this burger to devour
+        const burgerId = $(this).attr("burgerId");
+        const aBurger= {
+          devoured: true
+        };
+        
+        // Send the PUT request.
+        $.ajax("/devour/" + burgerId, {
+          type: "PUT",
+          data: aBurger
+        }).then(res => {
+            console.log("burger id(" + burgerId + ") is eaten");
+            // Reload the page to get the updated list
+            location.reload();
+          })
+          .catch(error => {
+            console.log(error);
+            // Hopefully still able to recover gracefully... 
+            location.reload();
+          });
+      });
+
     //remove a burger on button click
     $(".remove").on("click", function(event) {
         event.preventDefault();
@@ -33,7 +60,7 @@ $document.ready(() => {
             devoured = true
         };
 
-        //send the DELETE request
+        //send the DELETE request and the promise
         $.ajax("/remove/" + burgerId, {
             type: "DELETE",
             data: aBurger
@@ -41,7 +68,11 @@ $document.ready(() => {
             console.log("burger id(" + burgerId + ") is removed");
             //reload the page to get the updated list
             location.reload();
-        });
+        })
+        .catch(error => {
+            console.log(error);
+            location.reload();
+        })
     });
 
 });
