@@ -10,12 +10,11 @@
 var orm = require("../config/orm.js");
 
 class Burger {
-    constructor(database = orm) {
-        this.db = databse;
-    }
-}
-
-//
+  constructor(database = orm) {
+    this.db = database;
+  }
+  
+  //
   // Show all burgers currently in the database
   //
   list() {

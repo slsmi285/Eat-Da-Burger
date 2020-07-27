@@ -3,41 +3,54 @@ Setup the `index.handlebars` to have the template that Handlebars can render ont
 
      * Create a button in `index.handlebars` that will submit the user input into the database.
 
-     <h1>Cats!</h1>
+    <div class="text-center">
+  <div class="container">
+    <img src="assets/image/burger.png" class="img-fluid rounded burger-img mt-1">
+    <h1 class="display-5 title">Eat-Da-Burger!</h1>
 
-<h2>Cats that are not sleepy!</h2>
+    <div class="row">
 
-<ul>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
+      {{!-- Left Side for to-be-devoured burgers --}}
+      <div class="col" id="left-col">
+        <div class="text-right ml-auto mr-5">
+          {{#each burgers}}
+            {{#unless devoured}}
+              <div class="mb-1">
+                {{burger_name}}
+                <button class="btn btn-sm btn-outline-danger devour" burgerId="{{id}}">
+                  Devour It!
+                </button>
+              </div>
+            {{/unless}}
+          {{/each}}
+        </div>
+      </div>
 
-<h2>Cats that are sleepy!</h2>
+      {{!-- Right Side for not yet devoured ones --}}
+      <div class="col" id="right-col">
+        <div class="text-left mr-auto ml-5">
+          {{#each burgers}}
+            {{#if devoured}}
+              <div class="mb-1">
+                {{burger_name}}
+                <button class="btn btn-sm btn-outline-dark remove" burgerId="{{id}}">
+                  Remove
+                </button>
+              </div>
+            {{/if}}
+          {{/each}}
+        </div>
+      </div>
 
-<ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul>
+    </div>
 
-<h2>Add a Cat</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="ca">Cat Name:</label>
-    <input type="text" id="ca" name="name">
+    {{!-- Add a burger --}}
+    <p class="lead">Enter a burger name you want to eat</p>
+    <form id="add-burger">
+      <div class="form-group mx-auto" style="width: 35%">
+        <textarea type="text" class="form-control form-control-md" name="bname" id="burger"></textarea>
+      </div>
+      <button type="submit" class="btn btn-danger">Add Your Burger</button>
+    </form>
   </div>
-
-  <div class="form-group">
-    <label for="slee">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div>
-
-  <button type="submit">Add Cat</button>
-</form>
+</div>

@@ -1,4 +1,4 @@
-   * Create the `burgers_db`.
+   /* Create the `burgers_db`.
    * Switch to or use the `burgers_db`.
    * Create a `burgers` table with these fields:
      * **id**: an auto incrementing int that serves as the primary key.
@@ -20,25 +20,25 @@ Run the `schema.sql` and `seeds.sql` files into the mysql server from the comman
 
    * Close out of the MySQL command line tool: `exit`.
 
-### Schema
+### Schema*/
 
-CREATE DATABASE cat_db;
-USE cat_db;
+DROP DATABASE IF EXISTS burgers_db;
+CREATE DATABASE burgers_db;
+USE burgers_db;
+--  * **id**: an auto incrementing int that serves as the primary key.
+--  * **burger_name**: a string.
+--  * **devoured**: a boolean.
 
-CREATE TABLE cats
+CREATE TABLE burgers
 (
-	id int NOT NULL AUTO_INCREMENT,
-	name varchar(255) NOT NULL,
-	sleepy BOOLEAN DEFAULT false,
-	PRIMARY KEY (id)
+	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	burger_name varchar(255) NOT NULL,
+	devoured BOOLEAN DEFAULT 0,
 );
-CREATE TABLE pets
-(
-	id int NOT NULL AUTO_INCREMENT,
-	animal_breed varchar(255) NOT NULL,
-	animal_name varchar(255) NOT NULL,
-	price int NOT NULL,
-	buyer_id int NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (buyer_id) REFERENCES buyers(id)
-);
+
+-- PostgreSQL
+-- CREATE TABLE burgers (
+--   id smallserial PRIMARY KEY,
+--   burger_name VARCHAR(255) NOT NULL,
+--   devoured BOOLEAN DEFAULT false
+-- );
