@@ -4,14 +4,14 @@ In this app, a burger logger is created, user will "create" and "eat" burgers us
 ## Built With
 
 ### Technologies Used
-Express
-Express Handlebars
-ORM (Object Relational Modules)
-MVC (Model View Controller)
-JQuery
-Bootstrap
-MySQL
-Node
+- Express
+- Express Handlebars
+- ORM (Object Relational Modules)
+- MVC (Model View Controller)
+- JQuery
+- Bootstrap
+- MySQL
+- Node
 
 
 ### How the app works
