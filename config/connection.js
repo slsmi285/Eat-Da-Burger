@@ -5,7 +5,7 @@ var connection;
 // var connection = mysql.createConnection({ // Set connection parameters
 //   host: "localhost",
 //   user: "root",
-//   password: "0118488320613",
+//   password: "null",
 //   database: "burgers_db"
 // });
 
@@ -13,10 +13,10 @@ if(process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
   connection = mysql.createConnection({ // Set local connection parameters
-    host: "localhost",
-    user: "root",
-    password: "Florida89!",
-    database: "burgers_db"
+    host: "e11wl4mksauxgu1w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    user: "rooaeoq5stbg0ayn15nt",
+    password: "pcff2wboo6rnn34t",
+    database: "qtllgpvg135rc5om"
     });
 };
 
