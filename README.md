@@ -26,11 +26,11 @@ Node
 
 ## Screenshots
 
-![Eat Da Burger App]()
+![Eat Da Burger App](https://github.com/slsmi285/Eat-Da-Burger/blob/master/public/assets/images/BrowserApp.PNG)
 
-![Terminal Logs]()
+![Terminal Logs](https://github.com/slsmi285/Eat-Da-Burger/blob/master/public/assets/images/terminal%20entry%20logs.PNG)
 
-![Sequel DB]()
+![Sequel DB](https://github.com/slsmi285/Eat-Da-Burger/blob/master/public/assets/images/Sequel.PNG)
 
 [Heroku Link]()
 
