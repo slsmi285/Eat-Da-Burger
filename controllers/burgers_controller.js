@@ -1,96 +1,50 @@
-//Inside the `burgers_controller.js` file, import the following:
-// * Express
-//* `burger.js`
-//4. Create the `router` for the app, and export the `router` at the end of your file.
+//require Express
+var express = require("express");
+//requires burger.js                      
+var burger = require("../models/burger.js");
+//express routing           
+var router = express.Router();
 
-   
-// Import the model (cat.js) to use its database functions.
-// var express = require('express');
-var burger = require('../models/burger');
-
-// Routers for the burger app
-class Router {
-
-  // Initialize an instance with express app
-  // PARAMS: * app = initialized express app
-
-  constructor(expressApp) {
-    this.app = expressApp;
-  }  
-  
-  // Start all routers
-  start() {
-    this.index();
-    this.add();
-    this.devour();
-    this.remove();
-  }
-  
-  // Index Route
-  index() {
-    this.app.get('/', (req, res) => {
-      burger.list()
-      .then(burgers => {
-        res.render('index', {
-          burgers: burgers
-        });
-      })
-      .catch(error => console.log(error));
+//GET REQUEST
+router.get("/", function (req, res) {
+    burger.selectAll(function (data) {
+        //holds burger data                  
+        var burgerBurger = {
+            burgers: data
+        };
+        //renders index.handlebars
+        res.render("index", burgerBurger);
     });
-  }
-  
-  // Add Route
-  add() {
-    this.app.post('/add', (req, res) => {
-      const burgerName = req.body.burgerName;
-
-      if (/^\W*$/.test(burgerName)) {
-        console.log('No empty burger name allowed');
-      }
-      else {
-        burger.add(burgerName)
-          .then(result => {
-            res.redirect('/');
-          })
-          .catch(error => console.log(error));
-      }
+});
+//POST REQUEST - Create
+router.post("/insertOne", function (req, res) {
+    //passes data into HTML         
+    //call it random name - potato    
+    burger.insertOne(req.body.burger_name, function (cheese) {
+        //redirects it to main page
+        res.redirect("/")
     });
-  }
-  
-
-  // Devour route
-  devour() {
-    this.app.put('/devour/:id', (req, res) => {
-      // Convert "true" string to 1 (boolean)
-      if ('devoured' in req.body && req.body['devoured'] === 'true') {
-        req.body['devoured'] = 1;
-      }
-      
-      burger.devour(parseInt(req.params.id), req.body)
-        .then(result => {
-          res.redirect('/');
-        })
-        .catch(error => {
-          console.log(error);
-          res.redirect('/');
-        });
+});
+//POST REQUEST - Update
+router.post("/updateOne/:id", function (req, res) {
+    // holds burgers being devoured 
+    var condition = "id = " + req.params.id;
+    burger.updateOne({
+        // Use updateOne from burger.js
+        devoured: req.body.devoured
+    }, condition, function () {
+        //redirects it to main page                         
+        res.redirect("/");
     });
-  }
-  
-  // Remove route
-  remove() {
-    this.app.delete('/remove/:id', (req, res) => {
-      burger.delete(parseInt(req.params.id))
-        .then(result => {
-          res.redirect('/');
-        })
-        .catch(error => {
-          console.log(error);
-          res.redirect('/');
-        });
+});
+//POST REQUEST - Delete
+router.post("/deleteOne/:id", function (req, res) {
+    // holds burger being deleted     
+    var condition = "id = " + req.params.id;
+    // Redirect to the homepage                 
+    burger.deleteOne(condition, function () {
+        res.redirect("/");
     });
-  }
-}
+});
 
-// Export the Router
-module.exports = Router;
+module.exports = router;         

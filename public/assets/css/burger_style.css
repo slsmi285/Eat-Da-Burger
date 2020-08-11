@@ -1,44 +1,70 @@
-/* CSS  - impacts the main page, utlizing some new ideas below*/
+
 .container {
-  background-color: rgb(217, 238, 217);
+  background-color: rgb(185, 233, 245);
+  margin-top: 15px;
 }
-
-
 .jumbotron {
-  background-image: url("/assets/img/burgerpic.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
+  background-image: url("../images/burgerpic.jpg");
   background-size: cover;
-  margin-top: 10px;
+  background-repeat: no-repeat;
+  background-position-y: 1em; 
+  background-color: rgb(185, 233, 245);
 }
 
-.jumbotron > h1 {
-  font-family: 'Creepster', cursive;
-}
-
-
-#newburger {
-  border-radius: 5px;
-}
-
-#color-override {
-  color: #fff;
-}
-
-#lefthead {
-  background-color: #5cb85c;
-  color: white;
+.titleText {
   text-align: center;
-  font-size: 1.2em;
+  color: rgb(245, 12, 121);
+  font-weight: bolder;
+  font-size: 100px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-bottom: 80px;
+ 
 }
 
-#eatbutton, #trashbutton {
-  float: right;
-}
-
-#righthead {
-  background-color: #f0ad4e;
-  color: white;
+.miniHeading {
+  color: rgb(81, 255, 0);
   text-align: center;
-  font-size: 1.2em;
+  font-size: 38px;
+  font-family: 'Cabin Condensed', sans-serif;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border: 1px solid gray;
+  background-color: rgb(34, 33, 33);
+}
+
+.addBurger {
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+
+.burgtype {
+  text-align: center;
+  margin: 0 auto 3% 0;
+
+}
+
+
+.showBurger {
+  text-align: center;
+  font-size: 28px;
+  font-family: 'Cabin Condensed', sans-serif;
+}
+
+.devourBurger
+{
+  text-align: center;
+  font-size: 28px;
+  font-family: 'Cabin Condensed', sans-serif;
+
+}
+
+.btn {
+  padding-top: 0px;
+
+}
+
+p {
+  color: rgba(5, 9, 44, 0.883);
 }

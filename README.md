@@ -3,10 +3,15 @@ In this app, a burger logger is created with MySQL, Node, Express, Handlebars an
 
 Built With
 
-Using the MVC Method (Model View Controller)
+Technologies Used
 Express
-Express Handlebar
-NPM Package
+Express Handlebars
+ORM (Object Relational Modules)
+MVC (Model View Controller)
+JQuery
+Bootstrap
+MySQL
+Node
 
 
 

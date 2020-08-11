@@ -4,7 +4,9 @@
   "description": "In this app, a burger logger is created with MySQL, Node, Express, Handlebars and a homemade ORM (yum!). Using the MVC design pattern; use Node and MySQL to query and route data in the app, and Handlebars to generate the HTML.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +19,11 @@
   },
   "homepage": "https://github.com/slsmi285/Eat-Da-Burger#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0"
   }
 }

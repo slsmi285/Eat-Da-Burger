@@ -1,54 +1,66 @@
-{{!-- Setup the index.handlebars to have the template that Handlebars can render onto. --}}
-<div class="text-center">
-  <div class="container">
-    <div class="jumbotron">
-    <img src="assets/image/burger.png" class="img-fluid rounded burger-img mt-1">
-    <h1 class="display-5 title">Eat-Da-Burger!</h1>
-
-    </div>
+<div class="container">
+  <div class="jumbotron">
     <div class="row">
+      <div class="col-12">
+        <h1 class="titleText">Eat Da Burger</h1>
 
-      {{!-- Left Side for to-be-devoured burgers --}}
-      <div class="col" id="left-col">
-        <div class="text-right ml-auto mr-5">
-          {{#each burgers}}
-            {{#unless devoured}}
-              <div class="mb-1">
-                {{burger_name}}
-                <button class="btn btn-sm btn-outline-danger devour" burgerId="{{id}}">
-                  Devour It!
-                </button>
-              </div>
-            {{/unless}}
-          {{/each}}
-        </div>
       </div>
-
-      {{!-- Right Side for not yet devoured ones --}}
-      <div class="col" id="right-col">
-        <div class="text-left mr-auto ml-5">
-          {{#each burgers}}
-            {{#if devoured}}
-              <div class="mb-1">
-                {{burger_name}}
-                <button class="btn btn-sm btn-outline-dark remove" burgerId="{{id}}">
-                  Remove
-                </button>
-              </div>
-            {{/if}}
-          {{/each}}
-        </div>
-      </div>
-
     </div>
+  </div>
 
-    {{!-- Add a burger --}}
-    <p class="lead">Enter a burger name you want to eat</p>
-    <form id="add-burger">
-      <div class="form-group mx-auto" style="width: 35%">
-        <textarea type="text" class="form-control form-control-md" name="bname" id="burger"></textarea>
-      </div>
-      <button type="submit" class="btn btn-danger">Add Your Burger</button>
+<div class="row">
+  <div class="col-12 addBurger">
+    <h3 class="miniHeading">Add a Burger To Your List!</h3>
+    <div class="burgtype">
+      <form class="create-update-form" action="/insertOne" method="POST">
+        <div class="form-group">
+          <textarea type="text" name="burger_name"></textarea><br>
+          <button class="btn btn-warning" type="submit" style="background-color: rgb(156, 102, 32);">add da burger!
+          </button>
+        </div>
+    </div>
     </form>
   </div>
+</div>
+
+<div class="row">
+  <div class="col-6 burgers">
+    <h3 class="miniHeading">Your Burger List!</h3>
+    <br>
+    <ul>
+      {{#each burgers}}
+      {{#unless this.devoured}}
+      <div class="showBurger">
+        <p>
+          {{this.burger_name}}</p>
+        <form action="/updateOne/{{this.id}}" method="POST">
+          <input type="hidden" name="devoured" value="1">
+          <button type="submit" class="btn" style="background-color: #5DBCD2 ;">eat da burger!</button>
+        </form>
+        <br>
+      </div>
+      {{/unless}}
+      {{/each}}
+    </ul>
+  </div>
+  <div class="col-6 devoured">
+    <h3 class="miniHeading">Burgers Devoured!</h3>
+    <br>
+    <ul>
+      {{#each burgers}}
+      {{#if this.devoured}}
+      <div class="devourBurger">
+        <p>
+          {{this.burger_name}}</p>
+        <form action="/deleteOne/{{this.id}}" method="POST">
+          <button type="submit" class="btn" style="background-color: #5DBCD2 ;">delete da burger! </button>
+        </form>
+        {{/if}}
+        {{/each}}
+    </ul>
+  </div>
+</div>
+</div>
+<hr>
+
 </div>

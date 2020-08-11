@@ -1,33 +1,33 @@
+//require ORM
+var orm = require("../config/orm.js");                                                                 
 
-//model - burger app data
-//using strict for only declared variables
-'use strict';
-//* Also inside `burger.js`, create the code that will call the ORM functions using burger specific input for the ORM.
-//Inside `burger.js`, import `orm.js` into `burger.js`
-// Import the ORM to create functions that will interact with the database.
-var orm = require("../config/orm.js");
-// The code that will call the ORM functions using burger specific input for the ORM.
-class Burger {
-  constructor(database = orm) {
-    this.db = database;
-  }
-  // Show all burgers currently in the database
-  list() {
-    return this.db.selectAll();
-  }
-    // Add a new burger to the db.
-    add(burger) {
-      return this.db.insertOne(burger);
-    }
-    // devour the burger with using the "id"
-    devour(id, data = { devoured: true }) {
-      return this.db.updateOne(id, data);
-    }
-    // Delete a burger from the db, using the 'id'
-    delete(id, data = {}) {
-      return this.db.deleteOne(id, data);
-    }
-  }
+//burger variable and callback function 
+var burger = {
+    selectAll: function(callback) {                                         
+        orm.selectAll("burgers", function(res) {                            
+            callback(res);
+        });
+    },  
 
-// Export at the end of the burger.js file.
-module.exports = new Burger();
+    //insert function
+    insertOne: function (cheese, callback) {
+        orm.insertOne("burgers", "burger_name", cheese, function (buns) {
+            console.log("burgerJS cheese: ", cheese, "buns: ", buns);
+            callback(buns);
+        });
+    },
+    //update function
+    updateOne: function(colVal, id, cb) {
+        orm.updateOne(colVal, id, function(res) {
+            cb(res);
+        });
+    },
+    //delete function
+    deleteOne: function(id, callback) {
+        orm.deleteOne(id, function(res) {
+            callback(res);
+        });
+    }
+};
+
+module.exports = burger;
