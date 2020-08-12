@@ -2,9 +2,7 @@
 
 CREATE DATABASE burgers_db;
 USE burgers_db;
---  * **id**: an auto incrementing int that serves as the primary key.
---  * **burger_name**: a string.
---  * **devoured**: a boolean.
+
 
 CREATE TABLE burgers
 (
