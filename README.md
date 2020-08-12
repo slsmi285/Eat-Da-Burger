@@ -32,7 +32,7 @@ In this app, a burger logger is created, user will "create" and "eat" burgers us
 
 ![Sequel DB](https://github.com/slsmi285/Eat-Da-Burger/blob/master/public/assets/images/Sequel.PNG)
 
-[Heroku Link](https://stark-sierra-31142.herokuapp.com/)
+[Heroku Link](https://stark-sierra-31142.herokuapp.com)
 
 #### Directory structure
 
