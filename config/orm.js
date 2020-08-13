@@ -1,34 +1,31 @@
 
 var connection = require("./connection.js");
+const burger = require("../models/burger.js");
 //Select All ORM
 var orm = {
     selectAll: function(table, callback) {
-        //var queryString = "SELECT * FROM ??;";
-        connection.query('SELECT * FROM burgers', function(err, res) {
+        var queryString = "SELECT * FROM ??;";
+        connection.query(queryString, [table], function(err, res) {
             if (err) throw err;
             callback(res);
         });
     },
     //Insert 
-    insertOne: function(burger_name, callback) {
-    //var queryString = "INSERT INTO ?? (??) VALUES (?);"
-        connection.query('INSERT INTO burgers SET ?', {
-            burger_name: burger_name,
-            devoured: false,
-        },
-            function(err, res) {
+    insertOne: function(Salmon, Turkey, Bacon, callback) {
+    var queryString = "INSERT INTO ?? (??) VALUES (?);"
+        connection.query(queryString, [Salmon, Turkey, Bacon], function(err, Alfalfa){
             if (err) throw err;
-        callback(res);
+        callback(Alfalfa);
     });
     },
     //Update
     updateOne: function(colVal, id, callback) {
     var queryString = "UPDATE burgers SET devoured='1' WHERE " + id + ";";
-        connection.query(queryString, [id], function(err, result) {
+        connection.query(queryString, [id], function(err, res) {
       
             if (err) throw err;
       
-        callback(result);
+        callback(res);
         });
     },
     //Delete
