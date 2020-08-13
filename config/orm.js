@@ -3,18 +3,22 @@ var connection = require("./connection.js");
 //Select All ORM
 var orm = {
     selectAll: function(table, callback) {
-        var queryString = "SELECT * FROM ??;";
-        connection.query(queryString, [table], function(err, res) {
+        //var queryString = "SELECT * FROM ??;";
+        connection.query('SELECT * FROM burgers', function(err, res) {
             if (err) throw err;
             callback(res);
         });
     },
     //Insert 
-    insertOne: function(gryffindor, hufflepuff, ravenclaw, callback) {
-    var queryString = "INSERT INTO ?? (??) VALUES (?);"
-        connection.query(queryString, [gryffindor, hufflepuff, ravenclaw], function(err, slytherin){
+    insertOne: function(burger_name, callback) {
+    //var queryString = "INSERT INTO ?? (??) VALUES (?);"
+        connection.query('INSERT INTO burgers SET ?', {
+            burger_name: burger_name,
+            devoured: false,
+        },
+            function(err, res) {
             if (err) throw err;
-        callback(slytherin);
+        callback(res);
     });
     },
     //Update
