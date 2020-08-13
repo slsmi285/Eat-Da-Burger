@@ -12,12 +12,7 @@ require("dotenv").config();
 // });
 console.log(process.env.JAWSDB_URL);
 if(process.env.JAWSDB_URL) {            
-    connection = mysql.createConnection({
-      host: "e11wl4mksauxgu1w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-      user: "aeoq5stbg0ayn15n",
-      password: "pcff2wboo6rnn34t",
-      database: "qtllgpvg135rc5om"
-    });
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
 
 } else {
   connection = mysql.createConnection({ // Set local connection parameters
